@@ -16,7 +16,7 @@ class MotorDriver:
 		self.IN2A = pyb.Pin(pyb.Pin.board.PB5, pyb.Pin.OUT_PP)
 		
 		#set all pins low
-		self.EN_A.low()
+		self.EN_A.high()
 		self.IN1A.low()
 		self.IN2A.low()
 		
@@ -35,20 +35,16 @@ class MotorDriver:
 		
 		print ('Setting duty cycle to ' + str (level))
 
-		self.EN_A.high()
 		#direction
-		if level>=0:
-			self.IN1A.low()
+		if level>0:		
+			self.ch1.pulse_width_percent(0)	
 			self.ch2.pulse_width_percent(abs(level))
-			
-		else:
-			self.IN2A.low()
-			self.ch1.pulse_width_percent(level)
-			
-if __name__ == '__main__':
-	moe = MotorDriver()
-	moe.set_duty_cycle(80)
-	
-	moe.set_duty_cycle(-80)
-
-	moe.set_duty_cycle(0)
+			print('Positive Spin ' + str(level))
+		elif level == 0:
+			self.ch1.pulse_width_percent(abs(level))
+			self.ch2.pulse_width_percent(abs(level))
+			print('motor is off')
+		else:		
+			self.ch2.pulse_width_percent(0)
+			self.ch1.pulse_width_percent(abs(level))
+			print('Negative Spin ' + str(level))
