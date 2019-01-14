@@ -3,6 +3,13 @@ import pyb
 ''' @file main.py
 There must be a docstring at the beginning of a Python
 source file with an @file [filename] tag in it! '''
+
+'''To run this code:
+	1) Ensure the code is properly downloaded in the pyb directory
+	2) Ensure that motor_moranda_mueller is imported into main.py
+	3) First initialize a MotorDriver class (e.g. moe = MotorDriver())
+	4) Call the set_duty_cycle function (e.g. moe.set_duty_cycle(45) will cause the motor to spin at 45% pwm in one direction
+	   moe.set_duty_cycle(-45) will cause the motor to spin in the opposite direction, moe.set_duty_cycle(0) will stop the motor)'''
 class MotorDriver:
 	''' This class implements a motor driver for the
 	ME405 board. '''
