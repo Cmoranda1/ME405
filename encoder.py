@@ -1,6 +1,14 @@
 ## @file encoder.py
 #  This file contains an Encoder class. The Encoder object has the ability to read the number of clicks from an encoder.
 #  This code accounts for overflow and underflow on a 16-bit encoder
+#  
+#  To run this code you must have a compatible Nucleo STM-32 board
+#  Use the 3v3 and GND pins of the board to connect the Red and Black encoder wires Respectively
+#  Depending on which timer you want to use, you can either use Pins B6 and B7 or C6 and C7
+#  From the Repl Line, you can import the module (e.g import encoder as enc)
+#  You can then create an instance of an encoder class (e = enc.Encoder("A") would create an encoder on the B6 and B7 pins)
+#  e.read() will give the current position
+#  e.zero() will reset the position
 #
 #  @author Chris Moranda
 #  @author Hanno Mueller
