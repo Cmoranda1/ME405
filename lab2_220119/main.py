@@ -4,21 +4,31 @@ import closed_loop as loop
 import utime
 
 cL = loop.Closed_Loop()
-cL.set_setpoint(5000)
-cL.set_cont_gain(0.01)
+cL.set_setpoint(4000)
+cL.set_cont_gain(0.02)
 mot1 = motor.MotorDriver()
 enc1 = encoder.Encoder("A")
-mot1.set_duty_cycle(10)
+enc1.zero()
 last_time = utime.ticks_ms()
-'''This isn't correct yet. You'll want to find a good gain to use, constantly read to see if you're at the 
-correct position, call control to actuate etc...'''
+times = []
+positions = []
 while(1):
 	if(utime.ticks_ms() > (last_time + 10)):
-		enc1.read()
-		cL.control(enc1.read())
-		
+		times.append(utime.ticks_ms())
+		pos = enc1.read()
+		positions.append(pos)
+		actuation = cL.control(pos)
+		mot1.set_duty_cycle(actuation)
 		last_time = utime.ticks_ms()
-		if(enc1.read() == cL.setpoint):
+		if(abs(pos - cL.setpoint) <=200):
+			print("Destination reached :) " + str(abs(enc1.read() - cL.setpoint)))
 			break
-mot1.set_duty_cycle(0)
-		
+
+starttime = times[0]
+i = 0
+for time in times:
+	times[i] = time - starttime
+	i += 1
+	
+print(positions)
+print(times)
