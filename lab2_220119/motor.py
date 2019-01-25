@@ -1,15 +1,6 @@
 # main.py -- put your code here!
 import pyb
-''' @file main.py
-There must be a docstring at the beginning of a Python
-source file with an @file [filename] tag in it! '''
 
-'''To run this code:
-	1) Ensure the code is properly downloaded in the pyb directory
-	2) Ensure that motor_moranda_mueller is imported into main.py
-	3) First initialize a MotorDriver class (e.g. moe = MotorDriver())
-	4) Call the set_duty_cycle function (e.g. moe.set_duty_cycle(45) will cause the motor to spin at 45% pwm in one direction
-	   moe.set_duty_cycle(-45) will cause the motor to spin in the opposite direction, moe.set_duty_cycle(0) will stop the motor)'''
 class MotorDriver:
 	''' This class implements a motor driver for the
 	ME405 board. '''
@@ -40,18 +31,23 @@ class MotorDriver:
 		@param level A signed integer holding the duty
 		cycle of the voltage sent to the motor '''
 		
-		print ('Setting duty cycle to ' + str (level))
-
+		if(level > 100):
+			level = 100
+		elif(level < -100):
+			level = -100
+		
+		#print ('Setting duty cycle to ' + str (level))
+		
 		#direction
 		if level>0:		
-			self.ch1.pulse_width_percent(0)	
-			self.ch2.pulse_width_percent(abs(level))
-			print('Positive Spin ' + str(level))
+			self.ch1.pulse_width_percent(abs(level))
+			self.ch2.pulse_width_percent(0)
+			#print('Positive Spin ' + str(level))
 		elif level == 0:
 			self.ch1.pulse_width_percent(abs(level))
 			self.ch2.pulse_width_percent(abs(level))
-			print('motor is off')
+			#print('motor is off')
 		else:		
-			self.ch2.pulse_width_percent(0)
-			self.ch1.pulse_width_percent(abs(level))
-			print('Negative Spin ' + str(level))
+			self.ch1.pulse_width_percent(0)
+			self.ch2.pulse_width_percent(abs(level))
+			#print('Negative Spin ' + str(level))
