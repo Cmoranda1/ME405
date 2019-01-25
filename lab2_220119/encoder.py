@@ -5,6 +5,8 @@
 #  To run this code you must have a compatible Nucleo STM-32 board
 #  Use the 3v3 and GND pins of the board to connect the Red and Black encoder wires Respectively
 #  Depending on which timer you want to use, you can either use Pins B6 and B7 or C6 and C7
+#  B6 has to be connected to the yellow wire of the encoder
+#  B7 has to be connected to the blue wire of the encoder
 #  From the Repl Line, you can import the module (e.g import encoder as enc)
 #  You can then create an instance of an encoder class (e = enc.Encoder("A") would create an encoder on the B6 and B7 pins)
 #  e.read() will give the current position
@@ -87,12 +89,12 @@ class Encoder:
 
 		## Detects overflow and adds to the absolute total the actual distance from the last reading
 		if (self.lastvalue - self.currentvalue > MAX/2):
-			print("overflow happened!!-----------------------------------------------------------------------------")
+			#print("overflow happened!!-----------------------------------------------------------------------------")
 			self.absolute += (MAX-self.lastvalue)+self.currentvalue
 
 		## Detects underflow and subtracts from the absolute total the actual distance from the last reading
 		elif (self.currentvalue - self.lastvalue > MAX/2):
-			print("underflow happened!!----------------------------------------------------------------------------")
+			#print("underflow happened!!----------------------------------------------------------------------------")
 			self.absolute -= (self.lastvalue + (MAX - self.currentvalue))
 
 		## If no overflow occurs, adjust the absolute by the difference from the last reading
@@ -102,8 +104,8 @@ class Encoder:
 		## When absolute has been correctly adjusted, adjust the last value to reflect the most current reading	
 		self.lastvalue = self.currentvalue
 
-		print("Current value is " + str(self.currentvalue))
-		print("Absolute value is " + str(self.absolute))
+		#print("Current value is " + str(self.currentvalue))
+		#print("Absolute value is " + str(self.absolute))
 		return self.absolute
 	## Zero will reinitialize all of the timers and zero out the storage variables	
 	def zero(self):
