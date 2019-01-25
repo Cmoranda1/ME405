@@ -1,4 +1,3 @@
-
 class Closed_Loop:
 	def __init__(self):
 		self.setpoint = 0
@@ -6,10 +5,11 @@ class Closed_Loop:
 		print("Creating Closed Loop System")
 		
 	def control(self, curr_pos):
-		print("distance from setpoint:" + str(curr_pos - self.setpoint))
-		error = curr_pos - self.setpoint
+		#print("distance from setpoint:" + str(self.setpoint - curr_pos))
+		error = self.setpoint - curr_pos
 		actuation = self.propgain * (error)
-		print("Actuation is: " + str(actuation))
+		#print("Actuation is: " + str(actuation))
+
 		return actuation 
 		
 	def set_setpoint(self, setpoint):
