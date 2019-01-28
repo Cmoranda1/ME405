@@ -39,7 +39,7 @@ class Encoder:
 		
 		
 		if(ENC_NUM == 'A'):
-			print('Encoder A created')
+			#print('Encoder A created')
 
 			## initializes timer 4 for pb6 and pb7
 			self.tim = pyb.Timer(4)
@@ -111,7 +111,7 @@ class Encoder:
 	def zero(self):
 		
 		if(self.ENC_NUM == 'A'):
-			print("reset timer 4")
+			#print("reset timer 4")
 			## initializes timer 4 for pb6 and pb7
 			self.tim = pyb.Timer(4)
 			self.tim.init(prescaler=0, period=MAX)
@@ -125,7 +125,7 @@ class Encoder:
 			self.ch2 = self.tim.channel(2, pyb.Timer.ENC_AB, pin=self.b7)
 			
 		if(self.ENC_NUM == 'B'):
-			print("reset timer 8")
+			#print("reset timer 8")
 			## initializes timer 4 for pc6 and pc7
 			self.tim = pyb.Timer(8)
 			self.tim.init(prescaler=0, period=MAX)	
