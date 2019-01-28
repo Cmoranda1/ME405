@@ -5,30 +5,32 @@ import utime
 
 cL = loop.Closed_Loop()
 cL.set_setpoint(4000)
-cL.set_cont_gain(0.02)
-mot1 = motor.MotorDriver()
-enc1 = encoder.Encoder("A")
-enc1.zero()
-last_time = utime.ticks_ms()
-times = []
-positions = []
+
 while(1):
-	if(utime.ticks_ms() > (last_time + 10)):
+	#print("Enter a gain: ")
+	gain_set = input()
+	cL.set_cont_gain(float(gain_set))
+	mot1 = motor.MotorDriver()
+	enc1 = encoder.Encoder("A")
+	enc1.zero()
+	last_time = utime.ticks_ms()
+	times = []
+	positions = []
+
+	for x in range(300):
+		utime.sleep_ms(10)
 		times.append(utime.ticks_ms())
 		pos = enc1.read()
 		positions.append(pos)
 		actuation = cL.control(pos)
 		mot1.set_duty_cycle(actuation)
 		last_time = utime.ticks_ms()
-		if(abs(pos - cL.setpoint) <=200):
-			print("Destination reached :) " + str(abs(enc1.read() - cL.setpoint)))
-			break
 
-starttime = times[0]
-i = 0
-for time in times:
-	times[i] = time - starttime
-	i += 1
-	
-print(positions)
-print(times)
+	starttime = times[0]
+	i = 0
+	for time in times:
+		times[i] = time - starttime
+		i += 1
+		
+	print(positions)
+	print(times)
