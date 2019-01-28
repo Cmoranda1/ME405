@@ -22,7 +22,7 @@ class MotorDriver:
 		self.ch1 = self.tim3.channel(1, pyb.Timer.PWM, pin=self.IN1A)
 		self.ch2 = self.tim3.channel(2, pyb.Timer.PWM, pin=self.IN2A)
 		
-		print ('Creating a motor driver')
+		#print ('Creating a motor driver')
 	def set_duty_cycle (self, level):
 		''' This method sets the duty cycle to be sent
 		to the motor to the given level. Positive values
