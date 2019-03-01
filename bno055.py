@@ -42,10 +42,10 @@ class BNO055:
 
 	## This function is a generic function to take a reading from any of the sensors
 	#  @param The sensor reading to return (e.g ACC_DATA_X returns acceleration in the X-Axis)
-	def get_sensor_reading(axis_register):
+	def get_sensor_reading(self, axis_register):
 		## To get the reading, read 2 bytes from the address of the I2C and the specified register
 		#  of the desired axis
-		reading = self.i2c.mem_read(2, addr, axis)
+		reading = self.i2c.mem_read(2, addr, axis_register)
 		## Reading will contain a byte array.
 		#  The first index is the least significant byte 
 		#  and the second index contains the most significant byte
@@ -60,6 +60,3 @@ class BNO055:
 		if(value > 32767):
 			value = value - 65535
 		return value
-
-
-
