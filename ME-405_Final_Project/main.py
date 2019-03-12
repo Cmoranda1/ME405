@@ -2,7 +2,18 @@
 #
 ## @privatesection - Stuff in this file doesn't need to be Doxygen-ed
 #
-#  @author jr
+# changelog:
+# Hanno:
+# -improved print function
+# -commented GOING 
+# -
+#
+# ToDo:
+# -limit output values (actuation)
+# -limit error_sum
+# -output error_sum
+# -sensor calibration (IMU VCC connected to GPIO)
+# -Kp and Ki value optimization
 
 import pyb
 import micropython
@@ -12,7 +23,7 @@ import task_share
 import print_task
 import busy_task
 import motor
-import encoder
+import encoder as enc
 import closed_loop as loop
 import utime
 import bno055 as bn
@@ -21,15 +32,21 @@ import bno055 as bn
 micropython.alloc_emergency_exception_buf (100)
 
 
-GOING = const (0)
+#GOING = const (0)
 STOPPED = const (1)
+
+def start_up_calibration():
+    on_pin = pyb.Pin(pyb.Pin.board.PA6, pyb.Pin.OUT)
+    on_pin.low()
+    txt = input("Place the table flat for calibration")
+    on_pin.high()
 
 def task1_pitch_motor ():
     ## Function that implements task 1, a task which runs the closed loop motor control
     #  based on pitch readings from the IMU
     cL = loop.Closed_Loop()
     cL.set_setpoint(0)
-    cL.set_cont_gain(2.4)
+    cL.set_cont_gain(3.7, 0.07)
     mot1 = motor.MotorDriver("A")
 	
     while True:
@@ -38,7 +55,15 @@ def task1_pitch_motor ():
         #print(str(curr_pos))
         actuation = cL.control(curr_pos)
         q4.put(actuation)
-        mot1.set_duty_cycle(actuation)
+        if(abs(q9.get()) < 40):
+            mot1.set_duty_cycle(actuation)
+        elif(q9.get() >= 40 and curr_pos > 5):
+            mot1.set_duty_cycle(actuation)
+        elif(q9.get() <= -40 and curr_pos < -5):
+            mot1.set_duty_cycle(actuation)
+        else:
+            mot1.set_duty_cycle(0)
+        q6.put(cL.error_sum)
         yield(0)
 		
 def task2_roll_motor():
@@ -46,7 +71,7 @@ def task2_roll_motor():
     #  based on roll readings from the IMU
     cL = loop.Closed_Loop()
     cL.set_setpoint(0)
-    cL.set_cont_gain(2.4)
+    cL.set_cont_gain(3.7, 0.07)
     mot2 = motor.MotorDriver("B")
     
     while True:
@@ -58,6 +83,15 @@ def task2_roll_motor():
         actuation = cL.control(curr_pos)
         q5.put(actuation)
         mot2.set_duty_cycle(actuation)
+        # if(abs(q8.get()) < 30):
+        #     mot2.set_duty_cycle(actuation)
+        # elif(q8.get() >= 30 and curr_pos > 5):
+        #     mot2.set_duty_cycle(actuation)
+        # elif(q8.get() <= -30 and curr_pos < -5):
+        #     mot2.set_duty_cycle(actuation)
+        # else:
+        #     mot2.set_duty_cycle(0)
+        q7.put(cL.error_sum)
         yield(0)
 		
 def task3_imu_read():
@@ -70,18 +104,41 @@ def task3_imu_read():
         yield(0)
 
 def task4_print_stats():
-    pitch = q2.get()
-    roll  = q3.get()
-    mot1  = q4.get()
-    mot2  = q5.get()
+    pitch = 0
+    roll = 0
+    mot1 = 0
+    mot2 = 0
+    enc1 = 0
+    enc2 = 0
 
-    print(str(utime.ticks_ms()) + ", " + str(pitch) + ", " + str(roll) + ", " + str(mot1) + ", " + str(mot2))
+    while True:
+        pitch = q2.get()
+        roll  = q3.get()
+        mot1  = q4.get()
+        mot2  = q5.get()
+        error_sum1 = q6.get()
+        error_sum2 = q7.get()
+        enc1 = q8.get()
+        enc2 = q9.get()
+
+        #print(str(utime.ticks_ms()) + ", \t " + str(pitch) + ", \t" + str(roll) + ", \t" + str(mot1) + ", \t" + str(mot2))
+        print("%6d , %3.2f , %3.2f , %3.2f , %3.2f, %3.2f, %3.2f " % (utime.ticks_ms() , pitch , roll , mot1 , mot2, enc1, enc2))
+ 
+        yield(0)
+
+def task5_read_encoder():
+    enc1 = enc.Encoder("A")
+    enc2 = enc.Encoder("B")
+    while(1):
+        q8.put(enc1.read())
+        q9.put(enc2.read())
+        yield(0)
 		
 # =============================================================================
 
 if __name__ == "__main__":
 
-    print ('\033[2JTesting scheduler in cotask.py\n')
+
 
     # Create a share and some queues to test diagnostic printouts
 
@@ -96,23 +153,40 @@ if __name__ == "__main__":
 
     ## Hold roll motor values
     q5 = task_share.Share('f', thread_protect = False, name = "Queue_5")
+   
+    ## Hold pitch motor error_sum
+    q6 = task_share.Share('f', thread_protect = False, name = "Queue_6")
+    
+    ## Hold roll motor error_sum
+    q7 = task_share.Share('f', thread_protect = False, name = "Queue_7")
+    
+    ## Hold pitch encoder values
+    q8 = task_share.Share('f', thread_protect = False, name = "Queue_8")
+    
+    ## Hold roll encoder values
+    q9 = task_share.Share('f', thread_protect = False, name = "Queue_9")
+    
     # Create the tasks. If trace is enabled for any task, memory will be
     # allocated for state transition tracing, and the application will run out
     # of memory after a while and quit. Therefore, use tracing only for 
     # debugging and set trace to False when it's not needed
 
     task1 = cotask.Task (task1_pitch_motor, name = 'Task_1', priority = 2,
-                         period = 10, profile = True, trace = False)
+                         period = 22, profile = True, trace = False)
     task2 = cotask.Task (task2_roll_motor, name = 'Task_2', priority = 2,
-                         period = 10, profile = True, trace = False)
-    task3 = cotask.Task (task3_imu_read, name = 'Task_3', priority = 2,
-                         period = 20, profile = True, trace = False)
-    task4 = cotask.Task (task4_print_stats, name = 'Task_4', priority = 1, 
+                         period = 22, profile = True, trace = False)
+    task3 = cotask.Task (task3_imu_read, name = 'Task_3', priority = 3,
+                         period = 22, profile = True, trace = False)
+    task4 = cotask.Task (task4_print_stats, name = 'Task_4', priority = 1,
                          period = 50, profile = True, trace = False)
+    task5 = cotask.Task (task5_read_encoder, name = 'Task_5', priority = 4,
+                         period = 50, profile = True, trace = False)
+                         
     cotask.task_list.append (task1)
     cotask.task_list.append (task2)
     cotask.task_list.append (task3)
     cotask.task_list.append (task4)
+    cotask.task_list.append (task5)
 
     # A task which prints characters from a queue has automatically been
     # created in print_task.py; it is accessed by print_task.put_bytes()
@@ -128,6 +202,8 @@ if __name__ == "__main__":
     # character is sent through the serial por
     #vcp = pyb.USB_VCP ()
     #while not vcp.any ():
+    start_up_calibration()
+    utime.sleep_ms(2000)
     while(1):
         cotask.task_list.pri_sched ()
 
@@ -139,3 +215,5 @@ if __name__ == "__main__":
     #print (task_share.show_all ())
     #print (task1.get_trace ())
     #print ('\r\n')
+
+
