@@ -1,0 +1,161 @@
+\hypertarget{main_8py}{}\section{main.\+py File Reference}
+\label{main_8py}\index{main.py@{main.py}}
+
+
+This file contains all of the task setup and control for HC Woody, the self balancing table To run this code, it is essential to have included all of the driver libraries that are mentioned below, as well as utilizing the correct hardware and setting up the system as we have layed out in the design report.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8py_ae99c2226d9f81a8353ede9af9b466932}\label{main_8py_ae99c2226d9f81a8353ede9af9b466932}} 
+def \mbox{\hyperlink{main_8py_ae99c2226d9f81a8353ede9af9b466932}{main.\+start\+\_\+up\+\_\+calibration}} ()
+\begin{DoxyCompactList}\small\item\em This function is not for a task it must be done before the tasks begin running, to ensure accurate values from the sensors Using the serial terminal, the function will request that the table is level before beginning The pin P\+A6 will then be turned on to power up the sensor, and therefore reset the Euler Angles to 0 before beginning. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a06587b79488013f82a7bdb49303cfd76}\label{main_8py_a06587b79488013f82a7bdb49303cfd76}} 
+def \mbox{\hyperlink{main_8py_a06587b79488013f82a7bdb49303cfd76}{main.\+task1\+\_\+pitch\+\_\+motor}} ()
+\begin{DoxyCompactList}\small\item\em Function that implements task 1, a task which runs the closed loop motor control based on pitch readings from the I\+MU. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a687e81b39143cbc4cbe0eeef6de80c3d}\label{main_8py_a687e81b39143cbc4cbe0eeef6de80c3d}} 
+def \mbox{\hyperlink{main_8py_a687e81b39143cbc4cbe0eeef6de80c3d}{main.\+task2\+\_\+roll\+\_\+motor}} ()
+\begin{DoxyCompactList}\small\item\em Function that implements task 2, a task which runs the closed loop motor control based on roll readings from the I\+MU. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_ad391338b1d7c4a2b71d29e539604d46a}\label{main_8py_ad391338b1d7c4a2b71d29e539604d46a}} 
+def \mbox{\hyperlink{main_8py_ad391338b1d7c4a2b71d29e539604d46a}{main.\+task3\+\_\+imu\+\_\+read}} ()
+\begin{DoxyCompactList}\small\item\em This task utilizes the B\+N\+O055 sensor to take the Pitch and Roll Angles all in a single run. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a309a4219f6ebbe55f129889ac78f7455}\label{main_8py_a309a4219f6ebbe55f129889ac78f7455}} 
+def \mbox{\hyperlink{main_8py_a309a4219f6ebbe55f129889ac78f7455}{main.\+task4\+\_\+print\+\_\+stats}} ()
+\begin{DoxyCompactList}\small\item\em This task was mostly used for debugging purposes The task takes all of the current statistics and prints the, in a nice format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_abd9c60b56bc77ba8b764c347bddd5928}\label{main_8py_abd9c60b56bc77ba8b764c347bddd5928}} 
+def \mbox{\hyperlink{main_8py_abd9c60b56bc77ba8b764c347bddd5928}{main.\+task5\+\_\+read\+\_\+encoder}} ()
+\begin{DoxyCompactList}\small\item\em This task was created to read from the encoders It takes the readings of both encoders in a single run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8py_a3dee5018ca1f482a9502d783403896af}\label{main_8py_a3dee5018ca1f482a9502d783403896af}} 
+{\bfseries main.\+S\+T\+O\+P\+P\+ED} = const (1)
+\item 
+\mbox{\Hypertarget{main_8py_aeba127b742df3111dd963bef6c5c28b2}\label{main_8py_aeba127b742df3111dd963bef6c5c28b2}} 
+\mbox{\hyperlink{main_8py_aeba127b742df3111dd963bef6c5c28b2}{main.\+q2}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+2\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold pitch values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_aba0dbf357db427617ded88511cd1f6f4}\label{main_8py_aba0dbf357db427617ded88511cd1f6f4}} 
+\mbox{\hyperlink{main_8py_aba0dbf357db427617ded88511cd1f6f4}{main.\+q3}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+3\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold roll values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_ae328308e0adc6a69541793a4b20b8ff9}\label{main_8py_ae328308e0adc6a69541793a4b20b8ff9}} 
+\mbox{\hyperlink{main_8py_ae328308e0adc6a69541793a4b20b8ff9}{main.\+q4}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+4\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold pitch motor values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a3e325ccfb132ab4982ede9d12061c8ab}\label{main_8py_a3e325ccfb132ab4982ede9d12061c8ab}} 
+\mbox{\hyperlink{main_8py_a3e325ccfb132ab4982ede9d12061c8ab}{main.\+q5}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+5\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold roll motor values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a5a1a4727353e258957f0adb3b57b70ad}\label{main_8py_a5a1a4727353e258957f0adb3b57b70ad}} 
+\mbox{\hyperlink{main_8py_a5a1a4727353e258957f0adb3b57b70ad}{main.\+q6}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+6\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold pitch motor error\+\_\+sum. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a1626d29b532368289bd0f126ad9abc0e}\label{main_8py_a1626d29b532368289bd0f126ad9abc0e}} 
+\mbox{\hyperlink{main_8py_a1626d29b532368289bd0f126ad9abc0e}{main.\+q7}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+7\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold roll motor error\+\_\+sum. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_ae5751a27c69ef4068776875c21b547d1}\label{main_8py_ae5751a27c69ef4068776875c21b547d1}} 
+\mbox{\hyperlink{main_8py_ae5751a27c69ef4068776875c21b547d1}{main.\+q8}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+8\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold pitch encoder values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8py_a90cbda2ea702fd8965ae55e424837f38}\label{main_8py_a90cbda2ea702fd8965ae55e424837f38}} 
+\mbox{\hyperlink{main_8py_a90cbda2ea702fd8965ae55e424837f38}{main.\+q9}} = \mbox{\hyperlink{classtask__share_1_1_share}{task\+\_\+share.\+Share}}(\textquotesingle{}f\textquotesingle{}, thread\+\_\+protect = False, name = \char`\"{}Queue\+\_\+9\char`\"{})
+\begin{DoxyCompactList}\small\item\em Hold roll encoder values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_af4b8f4290f8d32e70654f6deb864787f}{main.\+task1}}
+\begin{DoxyCompactList}\small\item\em Motor task should be run at least every 22ms for \char`\"{}real time\char`\"{} results. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562}{main.\+task2}}
+\begin{DoxyCompactList}\small\item\em Motor task should be run at least every 22ms for \char`\"{}real time\char`\"{} results. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_a120516a5d42c212c898d4616d266077a}{main.\+task3}}
+\begin{DoxyCompactList}\small\item\em The I\+MU read task should as often as the motors to keep consistency between movement and current angles. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_ac0ee3c5b5359f76becfe27534e82085f}{main.\+task4}}
+\begin{DoxyCompactList}\small\item\em The print task stats has no bearing on the functionality of the system and therefore does not need a high priority or a fast timing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{main_8py_a11ec9e490c402876467b9fdadecc93e8}{main.\+task5}}
+\begin{DoxyCompactList}\small\item\em The encoder task doesn\textquotesingle{}t need to be called as often as the motor tasks, because the cutoff angle is less than the actual physical limit, so the range of error allows for a low priority. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains all of the task setup and control for HC Woody, the self balancing table To run this code, it is essential to have included all of the driver libraries that are mentioned below, as well as utilizing the correct hardware and setting up the system as we have layed out in the design report. 
+
+\begin{DoxyAuthor}{Author}
+Chris Moranda 
+
+Hanno Mueller 
+\end{DoxyAuthor}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8py_af4b8f4290f8d32e70654f6deb864787f}\label{main_8py_af4b8f4290f8d32e70654f6deb864787f}} 
+\index{main.py@{main.py}!task1@{task1}}
+\index{task1@{task1}!main.py@{main.py}}
+\subsubsection{\texorpdfstring{task1}{task1}}
+{\footnotesize\ttfamily main.\+task1}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  \mbox{\hyperlink{classcotask_1_1_task}{cotask.Task}} (task1\_pitch\_motor, name = \textcolor{stringliteral}{'Task\_1'}, priority = 2,}
+\DoxyCodeLine{2                          period = 22, profile = \textcolor{keyword}{True}, trace = \textcolor{keyword}{False})}
+
+\end{DoxyCode}
+
+
+Motor task should be run at least every 22ms for \char`\"{}real time\char`\"{} results. 
+
+\mbox{\Hypertarget{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562}\label{main_8py_a99d189b8f9eb3784cf7d4e5c3241b562}} 
+\index{main.py@{main.py}!task2@{task2}}
+\index{task2@{task2}!main.py@{main.py}}
+\subsubsection{\texorpdfstring{task2}{task2}}
+{\footnotesize\ttfamily main.\+task2}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  \mbox{\hyperlink{classcotask_1_1_task}{cotask.Task}} (task2\_roll\_motor, name = \textcolor{stringliteral}{'Task\_2'}, priority = 2,}
+\DoxyCodeLine{2                          period = 22, profile = \textcolor{keyword}{True}, trace = \textcolor{keyword}{False})}
+
+\end{DoxyCode}
+
+
+Motor task should be run at least every 22ms for \char`\"{}real time\char`\"{} results. 
+
+\mbox{\Hypertarget{main_8py_a120516a5d42c212c898d4616d266077a}\label{main_8py_a120516a5d42c212c898d4616d266077a}} 
+\index{main.py@{main.py}!task3@{task3}}
+\index{task3@{task3}!main.py@{main.py}}
+\subsubsection{\texorpdfstring{task3}{task3}}
+{\footnotesize\ttfamily main.\+task3}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  \mbox{\hyperlink{classcotask_1_1_task}{cotask.Task}} (task3\_imu\_read, name = \textcolor{stringliteral}{'Task\_3'}, priority = 3,}
+\DoxyCodeLine{2                          period = 22, profile = \textcolor{keyword}{True}, trace = \textcolor{keyword}{False})}
+
+\end{DoxyCode}
+
+
+The I\+MU read task should as often as the motors to keep consistency between movement and current angles. 
+
+\mbox{\Hypertarget{main_8py_ac0ee3c5b5359f76becfe27534e82085f}\label{main_8py_ac0ee3c5b5359f76becfe27534e82085f}} 
+\index{main.py@{main.py}!task4@{task4}}
+\index{task4@{task4}!main.py@{main.py}}
+\subsubsection{\texorpdfstring{task4}{task4}}
+{\footnotesize\ttfamily main.\+task4}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  \mbox{\hyperlink{classcotask_1_1_task}{cotask.Task}} (task4\_print\_stats, name = \textcolor{stringliteral}{'Task\_4'}, priority = 1,}
+\DoxyCodeLine{2                          period = 50, profile = \textcolor{keyword}{True}, trace = \textcolor{keyword}{False})}
+
+\end{DoxyCode}
+
+
+The print task stats has no bearing on the functionality of the system and therefore does not need a high priority or a fast timing. 
+
+\mbox{\Hypertarget{main_8py_a11ec9e490c402876467b9fdadecc93e8}\label{main_8py_a11ec9e490c402876467b9fdadecc93e8}} 
+\index{main.py@{main.py}!task5@{task5}}
+\index{task5@{task5}!main.py@{main.py}}
+\subsubsection{\texorpdfstring{task5}{task5}}
+{\footnotesize\ttfamily main.\+task5}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  \mbox{\hyperlink{classcotask_1_1_task}{cotask.Task}} (task5\_read\_encoder, name = \textcolor{stringliteral}{'Task\_5'}, priority = 4,}
+\DoxyCodeLine{2                          period = 50, profile = \textcolor{keyword}{True}, trace = \textcolor{keyword}{False})}
+
+\end{DoxyCode}
+
+
+The encoder task doesn\textquotesingle{}t need to be called as often as the motor tasks, because the cutoff angle is less than the actual physical limit, so the range of error allows for a low priority. 
+

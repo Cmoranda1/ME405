@@ -1,0 +1,99 @@
+\hypertarget{classencoder_1_1_encoder}{}\section{encoder.\+Encoder Class Reference}
+\label{classencoder_1_1_encoder}\index{encoder.Encoder@{encoder.Encoder}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classencoder_1_1_encoder_ae5bcae1276c8381631ead61fbb5286b4}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classencoder_1_1_encoder_ace1f5ee706bd0a9e66ec2a7c1173916b}{E\+N\+C\+\_\+\+N\+UM}})
+\begin{DoxyCompactList}\small\item\em Creates an encoder by initializing a timer and G\+P\+IO pins to read the channels. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_aa1c1535160682500f5214f45d8197027}\label{classencoder_1_1_encoder_aa1c1535160682500f5214f45d8197027}} 
+def \mbox{\hyperlink{classencoder_1_1_encoder_aa1c1535160682500f5214f45d8197027}{read}} (self)
+\begin{DoxyCompactList}\small\item\em Read will return the current position and the absolute position The current position will be a number between 0-\/65535 (16-\/bits) that is read by the encoder The absolute position will account for overflow and underflow and will keep a running total of clicks Absolute position is not limited by 16-\/bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}\label{classencoder_1_1_encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}} 
+def \mbox{\hyperlink{classencoder_1_1_encoder_ae238ecdbcbce8a193c2e0ffbb4d1dd29}{zero}} (self)
+\begin{DoxyCompactList}\small\item\em Zero will reinitialize all of the timers and zero out the storage variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classencoder_1_1_encoder_a6d34277d78f0f528aeb8b4d8901356b7}{tim}}
+\begin{DoxyCompactList}\small\item\em initializes timer 4 for pb6 and pb7 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_af5b110516a9ea8add87aa96427efe281}\label{classencoder_1_1_encoder_af5b110516a9ea8add87aa96427efe281}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_af5b110516a9ea8add87aa96427efe281}{b6}}
+\begin{DoxyCompactList}\small\item\em initializes pins pb6 and pb7 to read the quadrature signal \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a444cc2bb2eec080f518316579c93befb}\label{classencoder_1_1_encoder_a444cc2bb2eec080f518316579c93befb}} 
+{\bfseries b7}
+\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a076f2be10f58f336dd7fb70b55feee6f}\label{classencoder_1_1_encoder_a076f2be10f58f336dd7fb70b55feee6f}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_a076f2be10f58f336dd7fb70b55feee6f}{ch1}}
+\begin{DoxyCompactList}\small\item\em sets channels to read from the timer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a1c05e07f7131cc3d173daf4d26b605b5}\label{classencoder_1_1_encoder_a1c05e07f7131cc3d173daf4d26b605b5}} 
+{\bfseries ch2}
+\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a9bb5f42fb22b53704077222cd7600887}\label{classencoder_1_1_encoder_a9bb5f42fb22b53704077222cd7600887}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_a9bb5f42fb22b53704077222cd7600887}{c6}}
+\begin{DoxyCompactList}\small\item\em initializes pins pc6 and pc7 to read the quadrature signal \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_aa3e442f59b8c9691ea25078b177fea72}\label{classencoder_1_1_encoder_aa3e442f59b8c9691ea25078b177fea72}} 
+{\bfseries c7}
+\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_ace1f5ee706bd0a9e66ec2a7c1173916b}\label{classencoder_1_1_encoder_ace1f5ee706bd0a9e66ec2a7c1173916b}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_ace1f5ee706bd0a9e66ec2a7c1173916b}{E\+N\+C\+\_\+\+N\+UM}}
+\begin{DoxyCompactList}\small\item\em stores Encoder-\/\+Number for zero-\/fctn \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classencoder_1_1_encoder_ac25b53365fa6489ddaa4417db58619de}{lastvalue}}
+\begin{DoxyCompactList}\small\item\em stores position of last reading \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a2138dc820e1fc83f48ab411961f2532c}\label{classencoder_1_1_encoder_a2138dc820e1fc83f48ab411961f2532c}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_a2138dc820e1fc83f48ab411961f2532c}{absolute}}
+\begin{DoxyCompactList}\small\item\em stores the absolute running value \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classencoder_1_1_encoder_a67021e79ce3343a91b52bd4350aa8638}\label{classencoder_1_1_encoder_a67021e79ce3343a91b52bd4350aa8638}} 
+\mbox{\hyperlink{classencoder_1_1_encoder_a67021e79ce3343a91b52bd4350aa8638}{currentvalue}}
+\begin{DoxyCompactList}\small\item\em Takes the current value read from the encoder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classencoder_1_1_encoder_ae5bcae1276c8381631ead61fbb5286b4}\label{classencoder_1_1_encoder_ae5bcae1276c8381631ead61fbb5286b4}} 
+\index{encoder.Encoder@{encoder.Encoder}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!encoder.Encoder@{encoder.Encoder}}
+\subsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def encoder.\+Encoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{E\+N\+C\+\_\+\+N\+UM }\end{DoxyParamCaption})}
+
+
+
+Creates an encoder by initializing a timer and G\+P\+IO pins to read the channels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The Parameter E\+N\+C\+\_\+\+N\+UM specifies which pins to use if multiple encoders are in use. An argument of \char`\"{}\+A\char`\"{} will result in P\+B6 and P\+B7 being used. And argument of \char`\"{}\+B\char`\"{} will result in P\+C6 and P\+C7 being used to read the quadrature signal \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classencoder_1_1_encoder_ac25b53365fa6489ddaa4417db58619de}\label{classencoder_1_1_encoder_ac25b53365fa6489ddaa4417db58619de}} 
+\index{encoder.Encoder@{encoder.Encoder}!lastvalue@{lastvalue}}
+\index{lastvalue@{lastvalue}!encoder.Encoder@{encoder.Encoder}}
+\subsubsection{\texorpdfstring{lastvalue}{lastvalue}}
+{\footnotesize\ttfamily encoder.\+Encoder.\+lastvalue}
+
+
+
+stores position of last reading 
+
+reset the values that are being adjusted
+
+Detects overflow and adds to the absolute total the actual distance from the last reading.
+
+Detects underflow and subtracts from the absolute total the actual distance from the last reading If no overflow occurs, adjust the absolute by the difference from the last reading When absolute has been correctly adjusted, adjust the last value to reflect the most current reading \mbox{\Hypertarget{classencoder_1_1_encoder_a6d34277d78f0f528aeb8b4d8901356b7}\label{classencoder_1_1_encoder_a6d34277d78f0f528aeb8b4d8901356b7}} 
+\index{encoder.Encoder@{encoder.Encoder}!tim@{tim}}
+\index{tim@{tim}!encoder.Encoder@{encoder.Encoder}}
+\subsubsection{\texorpdfstring{tim}{tim}}
+{\footnotesize\ttfamily encoder.\+Encoder.\+tim}
+
+
+
+initializes timer 4 for pb6 and pb7 
+
+initializes timer 4 for pc6 and pc7
+
+initializes timer 8 for pc6 and pc7 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{encoder_8py}{encoder.\+py}}\end{DoxyCompactItemize}

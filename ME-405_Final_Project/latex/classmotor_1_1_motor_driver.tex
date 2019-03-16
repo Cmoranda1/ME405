@@ -1,0 +1,78 @@
+\hypertarget{classmotor_1_1_motor_driver}{}\section{motor.\+Motor\+Driver Class Reference}
+\label{classmotor_1_1_motor_driver}\index{motor.MotorDriver@{motor.MotorDriver}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classmotor_1_1_motor_driver_afdb79336d9a01da3225b1ce463a1b86f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, M\+O\+T\+\_\+\+N\+UM)
+\item 
+def \mbox{\hyperlink{classmotor_1_1_motor_driver_a51b4721406aa66e0807413199b8b700f}{set\+\_\+duty\+\_\+cycle}} (self, level)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a82c4f7d2d3b311235273ff976d300d1c}\label{classmotor_1_1_motor_driver_a82c4f7d2d3b311235273ff976d300d1c}} 
+{\bfseries E\+N\+\_\+A}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_ae5f62b22dfa14124343b8c2b58524950}\label{classmotor_1_1_motor_driver_ae5f62b22dfa14124343b8c2b58524950}} 
+{\bfseries I\+N1A}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a0d69b582264c0192f6288cfd1a603de8}\label{classmotor_1_1_motor_driver_a0d69b582264c0192f6288cfd1a603de8}} 
+{\bfseries I\+N2A}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_ab91b09598c1e2ef3b1e8b29b20b1604d}\label{classmotor_1_1_motor_driver_ab91b09598c1e2ef3b1e8b29b20b1604d}} 
+{\bfseries tim3}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_ab59ff180f9593d716a60d0177cd8564e}\label{classmotor_1_1_motor_driver_ab59ff180f9593d716a60d0177cd8564e}} 
+{\bfseries ch1}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_af47581f527f4163d62810c617e081001}\label{classmotor_1_1_motor_driver_af47581f527f4163d62810c617e081001}} 
+{\bfseries ch2}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a15a79f7d45ea38ddefa0c6d50fc64287}\label{classmotor_1_1_motor_driver_a15a79f7d45ea38ddefa0c6d50fc64287}} 
+{\bfseries E\+N\+\_\+B}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a97599c45bf1e521130f3b58f85bc8615}\label{classmotor_1_1_motor_driver_a97599c45bf1e521130f3b58f85bc8615}} 
+{\bfseries I\+N1B}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a1a55eacef25fa3eacab8988b5e0b9a44}\label{classmotor_1_1_motor_driver_a1a55eacef25fa3eacab8988b5e0b9a44}} 
+{\bfseries I\+N2B}
+\item 
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_ac0863a3810b1ec1c82d0b8f3a167ef04}\label{classmotor_1_1_motor_driver_ac0863a3810b1ec1c82d0b8f3a167ef04}} 
+{\bfseries tim5}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}This class implements a motor driver for the
+ME405 board. \end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_afdb79336d9a01da3225b1ce463a1b86f}\label{classmotor_1_1_motor_driver_afdb79336d9a01da3225b1ce463a1b86f}} 
+\index{motor.MotorDriver@{motor.MotorDriver}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!motor.MotorDriver@{motor.MotorDriver}}
+\subsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def motor.\+Motor\+Driver.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{M\+O\+T\+\_\+\+N\+UM }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates a motor driver by initializing GPIO
+pins and turning the motor off for safety. \end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmotor_1_1_motor_driver_a51b4721406aa66e0807413199b8b700f}\label{classmotor_1_1_motor_driver_a51b4721406aa66e0807413199b8b700f}} 
+\index{motor.MotorDriver@{motor.MotorDriver}!set\_duty\_cycle@{set\_duty\_cycle}}
+\index{set\_duty\_cycle@{set\_duty\_cycle}!motor.MotorDriver@{motor.MotorDriver}}
+\subsubsection{\texorpdfstring{set\_duty\_cycle()}{set\_duty\_cycle()}}
+{\footnotesize\ttfamily def motor.\+Motor\+Driver.\+set\+\_\+duty\+\_\+cycle (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{level }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This method sets the duty cycle to be sent
+to the motor to the given level. Positive values
+cause torque in one direction, negative values
+in the opposite direction.
+@param level A signed integer holding the duty
+cycle of the voltage sent to the motor \end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor.\+py\end{DoxyCompactItemize}

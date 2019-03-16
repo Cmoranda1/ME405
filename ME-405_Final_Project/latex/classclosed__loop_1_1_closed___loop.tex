@@ -1,0 +1,105 @@
+\hypertarget{classclosed__loop_1_1_closed___loop}{}\section{closed\+\_\+loop.\+Closed\+\_\+\+Loop Class Reference}
+\label{classclosed__loop_1_1_closed___loop}\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_ae5236ac65bf24d2b7e7ddc3e5af2ac41}\label{classclosed__loop_1_1_closed___loop_ae5236ac65bf24d2b7e7ddc3e5af2ac41}} 
+def \mbox{\hyperlink{classclosed__loop_1_1_closed___loop_ae5236ac65bf24d2b7e7ddc3e5af2ac41}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Constructor used to create a \mbox{\hyperlink{classclosed__loop_1_1_closed___loop}{Closed\+\_\+\+Loop}} object all values are initially set to zero. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classclosed__loop_1_1_closed___loop_a3f3be180b49ecd228fc0a14bec29cb2a}{control}} (self, curr\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Function that is run in a loop to perform control Integral is a running sum Proportion error is calculated by difference between current position and setpoint. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classclosed__loop_1_1_closed___loop_a06332805a3fba3aee9bacc2843840ae7}{set\+\_\+setpoint}} (self, set\+\_\+point)
+\begin{DoxyCompactList}\small\item\em Set setpoint for control. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classclosed__loop_1_1_closed___loop_af47dbd741bdc69255ebc85bc2e425be1}{set\+\_\+cont\+\_\+gain}} (self, prop\+\_\+gain, int\+\_\+gain)
+\begin{DoxyCompactList}\small\item\em Set both proportional and integral gain. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_a766d428f86901b3873e5bbd9ffee9311}\label{classclosed__loop_1_1_closed___loop_a766d428f86901b3873e5bbd9ffee9311}} 
+\mbox{\hyperlink{classclosed__loop_1_1_closed___loop_a766d428f86901b3873e5bbd9ffee9311}{setpoint}}
+\begin{DoxyCompactList}\small\item\em Setpoint that the controller would like to be at. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_a0a08e1704606920a1723ee0120009fb6}\label{classclosed__loop_1_1_closed___loop_a0a08e1704606920a1723ee0120009fb6}} 
+\mbox{\hyperlink{classclosed__loop_1_1_closed___loop_a0a08e1704606920a1723ee0120009fb6}{propgain}}
+\begin{DoxyCompactList}\small\item\em The proportional gain, determined by current position -\/ set point. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed___loop_aca1d60310aeee998957c88ec32a8f660}{intgain}}
+\begin{DoxyCompactList}\small\item\em The integral part of the gain, calculated over time (e.\+g. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclosed__loop_1_1_closed___loop_a009eae11cd48d7a96b2332367efd5df2}{error\+\_\+sum}}
+\begin{DoxyCompactList}\small\item\em The error sum, this is the delta part of the integral gain. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_a3f3be180b49ecd228fc0a14bec29cb2a}\label{classclosed__loop_1_1_closed___loop_a3f3be180b49ecd228fc0a14bec29cb2a}} 
+\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}!control@{control}}
+\index{control@{control}!closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsubsection{\texorpdfstring{control()}{control()}}
+{\footnotesize\ttfamily def closed\+\_\+loop.\+Closed\+\_\+\+Loop.\+control (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{curr\+\_\+pos }\end{DoxyParamCaption})}
+
+
+
+Function that is run in a loop to perform control Integral is a running sum Proportion error is calculated by difference between current position and setpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Current} & position of the system. This is calculated by some sensor that the control loop is monitoring \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_af47dbd741bdc69255ebc85bc2e425be1}\label{classclosed__loop_1_1_closed___loop_af47dbd741bdc69255ebc85bc2e425be1}} 
+\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}!set\_cont\_gain@{set\_cont\_gain}}
+\index{set\_cont\_gain@{set\_cont\_gain}!closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsubsection{\texorpdfstring{set\_cont\_gain()}{set\_cont\_gain()}}
+{\footnotesize\ttfamily def closed\+\_\+loop.\+Closed\+\_\+\+Loop.\+set\+\_\+cont\+\_\+gain (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{prop\+\_\+gain,  }\item[{}]{int\+\_\+gain }\end{DoxyParamCaption})}
+
+
+
+Set both proportional and integral gain. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Proportional} & gain to use \\
+\hline
+{\em Integral} & gain to use \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_a06332805a3fba3aee9bacc2843840ae7}\label{classclosed__loop_1_1_closed___loop_a06332805a3fba3aee9bacc2843840ae7}} 
+\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}!set\_setpoint@{set\_setpoint}}
+\index{set\_setpoint@{set\_setpoint}!closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsubsection{\texorpdfstring{set\_setpoint()}{set\_setpoint()}}
+{\footnotesize\ttfamily def closed\+\_\+loop.\+Closed\+\_\+\+Loop.\+set\+\_\+setpoint (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{set\+\_\+point }\end{DoxyParamCaption})}
+
+
+
+Set setpoint for control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & desired setpoint \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_a009eae11cd48d7a96b2332367efd5df2}\label{classclosed__loop_1_1_closed___loop_a009eae11cd48d7a96b2332367efd5df2}} 
+\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}!error\_sum@{error\_sum}}
+\index{error\_sum@{error\_sum}!closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsubsection{\texorpdfstring{error\_sum}{error\_sum}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+\_\+\+Loop.\+error\+\_\+sum}
+
+
+
+The error sum, this is the delta part of the integral gain. 
+
+If someone holds the system in place, do not allow the integral gain to increase to a ridiculous amount and potentially break the system. \mbox{\Hypertarget{classclosed__loop_1_1_closed___loop_aca1d60310aeee998957c88ec32a8f660}\label{classclosed__loop_1_1_closed___loop_aca1d60310aeee998957c88ec32a8f660}} 
+\index{closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}!intgain@{intgain}}
+\index{intgain@{intgain}!closed\_loop.Closed\_Loop@{closed\_loop.Closed\_Loop}}
+\subsubsection{\texorpdfstring{intgain}{intgain}}
+{\footnotesize\ttfamily closed\+\_\+loop.\+Closed\+\_\+\+Loop.\+intgain}
+
+
+
+The integral part of the gain, calculated over time (e.\+g. 
+
+a longer time away from the Setpoint is corrected by a larger torque/actuation 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{closed__loop_8py}{closed\+\_\+loop.\+py}}\end{DoxyCompactItemize}

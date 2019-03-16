@@ -1,0 +1,32 @@
+\hypertarget{encoder_8py}{}\section{encoder.\+py File Reference}
+\label{encoder_8py}\index{encoder.py@{encoder.py}}
+
+
+This file contains an Encoder class.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classencoder_1_1_encoder}{encoder.\+Encoder}}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{encoder_8py_ab27d6f689634990576323a8e782f1971}\label{encoder_8py_ab27d6f689634990576323a8e782f1971}} 
+int \mbox{\hyperlink{encoder_8py_ab27d6f689634990576323a8e782f1971}{encoder.\+M\+AX}} = 65535
+\begin{DoxyCompactList}\small\item\em 16-\/bit max \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This file contains an Encoder class. 
+
+The Encoder object has the ability to read the number of clicks from an encoder. This code accounts for overflow and underflow on a 16-\/bit encoder
+
+To run this code you must have a compatible Nucleo S\+T\+M-\/32 board Use the 3v3 and G\+ND pins of the board to connect the Red and Black encoder wires Respectively Depending on which timer you want to use, you can either use Pins B6 and B7 or C6 and C7 B6 has to be connected to the yellow wire of the encoder B7 has to be connected to the blue wire of the encoder From the Repl Line, you can import the module (e.\+g import encoder as enc) You can then create an instance of an encoder class (e = enc.\+Encoder(\char`\"{}\+A\char`\"{}) would create an encoder on the B6 and B7 pins) e.\+read() will give the current position e.\+zero() will reset the position
+
+\begin{DoxyAuthor}{Author}
+Chris Moranda 
+
+Hanno Mueller 
+\end{DoxyAuthor}

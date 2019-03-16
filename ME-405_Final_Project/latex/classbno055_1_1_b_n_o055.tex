@@ -1,0 +1,59 @@
+\hypertarget{classbno055_1_1_b_n_o055}{}\section{bno055.\+B\+N\+O055 Class Reference}
+\label{classbno055_1_1_b_n_o055}\index{bno055.BNO055@{bno055.BNO055}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classbno055_1_1_b_n_o055_a7c9d3511b593522191a131e31d22761a}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, mode)
+\begin{DoxyCompactList}\small\item\em Constructor to create a bno055 object. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classbno055_1_1_b_n_o055_a8930cf974921f89580761cad8881e9d8}{get\+\_\+sensor\+\_\+reading}} (self, axis\+\_\+register)
+\begin{DoxyCompactList}\small\item\em This function is a generic function to take a reading from any of the sensors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbno055_1_1_b_n_o055_a6e4029bdf98339217b2ca55ae0263dfa}\label{classbno055_1_1_b_n_o055_a6e4029bdf98339217b2ca55ae0263dfa}} 
+{\bfseries i2c}
+\item 
+\mbox{\Hypertarget{classbno055_1_1_b_n_o055_a994806612bbcd4436c69d5136affea3f}\label{classbno055_1_1_b_n_o055_a994806612bbcd4436c69d5136affea3f}} 
+{\bfseries addr}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbno055_1_1_b_n_o055_a7c9d3511b593522191a131e31d22761a}\label{classbno055_1_1_b_n_o055_a7c9d3511b593522191a131e31d22761a}} 
+\index{bno055.BNO055@{bno055.BNO055}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!bno055.BNO055@{bno055.BNO055}}
+\subsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def bno055.\+B\+N\+O055.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{mode }\end{DoxyParamCaption})}
+
+
+
+Constructor to create a bno055 object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & mode of operation to run in This mode is written to the operation register N\+D\+OF operation will turn on all of the axes for reading Constructor initially makes a public I2C object that can be used throughout code \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classbno055_1_1_b_n_o055_a8930cf974921f89580761cad8881e9d8}\label{classbno055_1_1_b_n_o055_a8930cf974921f89580761cad8881e9d8}} 
+\index{bno055.BNO055@{bno055.BNO055}!get\_sensor\_reading@{get\_sensor\_reading}}
+\index{get\_sensor\_reading@{get\_sensor\_reading}!bno055.BNO055@{bno055.BNO055}}
+\subsubsection{\texorpdfstring{get\_sensor\_reading()}{get\_sensor\_reading()}}
+{\footnotesize\ttfamily def bno055.\+B\+N\+O055.\+get\+\_\+sensor\+\_\+reading (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{axis\+\_\+register }\end{DoxyParamCaption})}
+
+
+
+This function is a generic function to take a reading from any of the sensors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & sensor reading to return (e.\+g A\+C\+C\+\_\+\+D\+A\+T\+A\+\_\+X returns acceleration in the X-\/\+Axis) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bno055_8py}{bno055.\+py}}\end{DoxyCompactItemize}

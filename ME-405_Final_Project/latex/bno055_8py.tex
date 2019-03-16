@@ -1,0 +1,74 @@
+\hypertarget{bno055_8py}{}\section{bno055.\+py File Reference}
+\label{bno055_8py}\index{bno055.py@{bno055.py}}
+
+
+This is a driver class for the bno055 I\+MU sensor It allows the user to set a mode and take a reading from any of the 9 axes.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbno055_1_1_b_n_o055}{bno055.\+B\+N\+O055}}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{bno055_8py_a7799b20558f9f260a7488fd04be55ce0}\label{bno055_8py_a7799b20558f9f260a7488fd04be55ce0}} 
+int \mbox{\hyperlink{bno055_8py_a7799b20558f9f260a7488fd04be55ce0}{bno055.\+addr}} = 41
+\begin{DoxyCompactList}\small\item\em Address of the I2C bus. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bno055_8py_a3b6cc6a57e2f1dd963692d9ea9386dbb}\label{bno055_8py_a3b6cc6a57e2f1dd963692d9ea9386dbb}} 
+int \mbox{\hyperlink{bno055_8py_a3b6cc6a57e2f1dd963692d9ea9386dbb}{bno055.\+op\+\_\+reg}} = 0x3d
+\begin{DoxyCompactList}\small\item\em Register to change the operational mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bno055_8py_ad57cf82abf73bb12d1860b8b425fe044}\label{bno055_8py_ad57cf82abf73bb12d1860b8b425fe044}} 
+int \mbox{\hyperlink{bno055_8py_ad57cf82abf73bb12d1860b8b425fe044}{bno055.\+ndof}} = 0x0c
+\begin{DoxyCompactList}\small\item\em Operation to turn on all sensors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bno055_8py_ae19b2984039f7548a93bdd67a6996c5e}\label{bno055_8py_ae19b2984039f7548a93bdd67a6996c5e}} 
+int {\bfseries bno055.\+imu} = 0x08
+\item 
+\mbox{\Hypertarget{bno055_8py_a880b6735e78b233331c645884e947d8c}\label{bno055_8py_a880b6735e78b233331c645884e947d8c}} 
+int \mbox{\hyperlink{bno055_8py_a880b6735e78b233331c645884e947d8c}{bno055.\+A\+C\+C\+\_\+\+D\+A\+T\+A\+\_\+X}} = 0x08
+\begin{DoxyCompactList}\small\item\em Registers to get values from sensors Names should be self explanatory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{bno055_8py_a7e066c40c7c2464e02f89f86d7ca5408}\label{bno055_8py_a7e066c40c7c2464e02f89f86d7ca5408}} 
+int {\bfseries bno055.\+A\+C\+C\+\_\+\+D\+A\+T\+A\+\_\+Y} = 0x0A
+\item 
+\mbox{\Hypertarget{bno055_8py_a4286490bdd086e4aa36785c934878935}\label{bno055_8py_a4286490bdd086e4aa36785c934878935}} 
+int {\bfseries bno055.\+A\+C\+C\+\_\+\+D\+A\+T\+A\+\_\+Z} = 0x0C
+\item 
+\mbox{\Hypertarget{bno055_8py_ababfc8d790047c8c2d5874403f2e8284}\label{bno055_8py_ababfc8d790047c8c2d5874403f2e8284}} 
+int {\bfseries bno055.\+M\+A\+G\+\_\+\+D\+A\+T\+A\+\_\+X} = 0x0E
+\item 
+\mbox{\Hypertarget{bno055_8py_a835a38939fb596de4eee280f1667fb75}\label{bno055_8py_a835a38939fb596de4eee280f1667fb75}} 
+int {\bfseries bno055.\+M\+A\+G\+\_\+\+D\+A\+T\+A\+\_\+Y} = 0x10
+\item 
+\mbox{\Hypertarget{bno055_8py_a954abf6c676aef608db475c8d66b8835}\label{bno055_8py_a954abf6c676aef608db475c8d66b8835}} 
+int {\bfseries bno055.\+M\+A\+G\+\_\+\+D\+A\+T\+A\+\_\+Z} = 0x12
+\item 
+\mbox{\Hypertarget{bno055_8py_a6a589f7efcd3c800f6e9031caa4687a3}\label{bno055_8py_a6a589f7efcd3c800f6e9031caa4687a3}} 
+int {\bfseries bno055.\+G\+Y\+R\+\_\+\+D\+A\+T\+A\+\_\+X} = 0x14
+\item 
+\mbox{\Hypertarget{bno055_8py_a69b9a48adc8fce3969249ad26663cc17}\label{bno055_8py_a69b9a48adc8fce3969249ad26663cc17}} 
+int {\bfseries bno055.\+G\+Y\+R\+\_\+\+D\+A\+T\+A\+\_\+Y} = 0x16
+\item 
+\mbox{\Hypertarget{bno055_8py_a4cfb2ad80baa5b0b9b0af35e9ea16728}\label{bno055_8py_a4cfb2ad80baa5b0b9b0af35e9ea16728}} 
+int {\bfseries bno055.\+G\+Y\+R\+\_\+\+D\+A\+T\+A\+\_\+Z} = 0x18
+\item 
+\mbox{\Hypertarget{bno055_8py_a44a4bca49f52af0adeb11467f2e2b0eb}\label{bno055_8py_a44a4bca49f52af0adeb11467f2e2b0eb}} 
+int {\bfseries bno055.\+E\+U\+L\+E\+R\+\_\+H} = 0x1A
+\item 
+\mbox{\Hypertarget{bno055_8py_ab9fce198b9502ae4db52b0b397db393b}\label{bno055_8py_ab9fce198b9502ae4db52b0b397db393b}} 
+int {\bfseries bno055.\+E\+U\+L\+E\+R\+\_\+R} = 0x1C
+\item 
+\mbox{\Hypertarget{bno055_8py_ae4e7f04908a0de367800282eef4a773d}\label{bno055_8py_ae4e7f04908a0de367800282eef4a773d}} 
+int {\bfseries bno055.\+E\+U\+L\+E\+R\+\_\+P} = 0x1E
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a driver class for the bno055 I\+MU sensor It allows the user to set a mode and take a reading from any of the 9 axes. 
+
+\begin{DoxyAuthor}{Author}
+Chris Moranda and Hanno Mueller
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 1st 2019 
+\end{DoxyDate}
